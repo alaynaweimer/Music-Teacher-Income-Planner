@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Teacher Income Planner - Discover Your Success with Alayna Marie</title>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  MUSIC TEACHER INCOME PLANNER - WELCOME HUB
+  Copyright © 2025 Alayna Marie Weimer. All Rights Reserved.
+  BRAND: Discover Your Success with Alayna Marie
+  For inquiries: alayna@ignitepositivechanges.com
+═══════════════════════════════════════════════════════════════════════
+-->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 50%, #E76F51 100%);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        #passwordOverlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 50%, #E76F51 100%);
+            display: flex; align-items: center; justify-content: center; z-index: 9999;
+        }
+        #passwordOverlay.hidden { display: none; }
+        .password-box {
+            background: white; padding: 40px; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); max-width: 400px; width: 90%; text-align: center;
+        }
+        .password-box h2 { color: #2c3e50; margin-bottom: 10px; font-size: 1.8em; }
+        .password-box p { color: #666; margin-bottom: 30px; }
+        .password-box input {
+            width: 100%; padding: 15px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-size: 1.1em; margin-bottom: 20px;
+        }
+        .password-box input:focus { outline: none; border-color: #F4A261; }
+        .password-box button {
+            width: 100%; background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            color: #2c3e50; border: none; padding: 15px; font-size: 1.1em;
+            border-radius: 10px; cursor: pointer; font-weight: 700;
+        }
+        .error-message { color: #dc2626; margin-top: 15px; font-size: 0.9em; display: none; }
+        .error-message.show { display: block; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .header {
+            background: white; border-radius: 20px; padding: 40px 20px;
+            text-align: center; margin-bottom: 30px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .logo-text {
+            font-size: 2.5em; font-weight: 700; color: #2c3e50; margin-bottom: 10px;
+        }
+        .logo-subtitle { font-size: 1.2em; color: #F4A261; font-weight: 600; margin-bottom: 30px; }
+        .header h1 { color: #2c3e50; font-size: 2.5em; margin-bottom: 15px; font-weight: 700; }
+        .header p { color: #666; font-size: 1.15em; max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        
+        .welcome-section {
+            background: white; border-radius: 15px; padding: 35px; margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border-top: 5px solid #FFD93D;
+        }
+        .welcome-section h2 { color: #2c3e50; font-size: 1.8em; margin-bottom: 20px; font-weight: 700; }
+        .welcome-section p { color: #2c3e50; font-size: 1.05em; margin-bottom: 15px; line-height: 1.7; }
+        .welcome-section strong { color: #F4A261; }
+        
+        .tools-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; margin-bottom: 30px;
+        }
+        .tool-card {
+            background: white; border-radius: 15px; padding: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border-left: 6px solid #F4A261;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(244, 162, 97, 0.3);
+        }
+        .tool-icon {
+            font-size: 3em; margin-bottom: 15px;
+        }
+        .tool-card h3 {
+            color: #2c3e50; font-size: 1.4em; margin-bottom: 15px; font-weight: 700;
+        }
+        .tool-card p {
+            color: #666; margin-bottom: 20px; line-height: 1.6;
+        }
+        .tool-button {
+            display: inline-block; width: 100%;
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            color: #2c3e50; text-decoration: none; padding: 15px;
+            border-radius: 10px; font-weight: 700; text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s; text-transform: uppercase;
+            letter-spacing: 0.5px; font-size: 1em;
+        }
+        .tool-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.4);
+        }
+        
+        .quick-start {
+            background: linear-gradient(180deg, #ffffff 0%, #FFE8CC 50%);
+            border: 3px solid #FFD93D; border-radius: 15px; padding: 30px; margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.3);
+        }
+        .quick-start h2 {
+            color: #2c3e50; font-size: 1.6em; margin-bottom: 20px; text-align: center; font-weight: 700;
+        }
+        .step-item {
+            display: flex; align-items: start; margin: 15px 0; padding: 15px;
+            background: white; border-radius: 10px; border-left: 4px solid #F4A261;
+        }
+        .step-number {
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            color: #2c3e50; font-weight: bold; font-size: 1.2em;
+            width: 35px; height: 35px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-right: 15px; flex-shrink: 0;
+        }
+        .step-text strong { color: #2c3e50; display: block; margin-bottom: 5px; }
+        .step-text p { color: #666; margin: 0; }
+        
+        .footer {
+            background: white; border-radius: 15px; padding: 30px; margin-top: 30px;
+            text-align: center; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .footer p { color: #666; margin: 8px 0; }
+        .footer a { color: #F4A261; text-decoration: none; font-weight: 600; }
+        .footer a:hover { text-decoration: underline; }
+        .footer .brand-name { color: #2c3e50; font-weight: 700; font-size: 1.2em; margin-top: 15px; }
+        .footer .copyright { color: #999; font-size: 0.9em; margin-top: 10px; }
+        
+        @media (max-width: 768px) {
+            .logo-text { font-size: 1.8em; }
+            .header h1 { font-size: 1.8em; }
+            .tools-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div id="passwordOverlay">
+        <div class="password-box">
+            <h2>🔐 Access Required</h2>
+            <p>Enter your toolkit password to access the Music Teacher Income Planner</p>
+            <input type="password" id="passwordInput" placeholder="Enter password">
+            <button onclick="checkPassword()">Unlock Toolkit</button>
+            <div id="errorMessage" class="error-message">❌ Incorrect password. Please try again.</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-text">Discover Your Success</div>
+            <div class="logo-subtitle">with Alayna Marie</div>
+            <h1>🎹 Music Teacher Income Planner</h1>
+            <p>Stop guessing. Start earning what you deserve. Calculate your true income, plan your student load strategically, and build a thriving private teaching practice.</p>
+        </div>
+
+        <div class="welcome-section">
+            <h2>🎯 Why This Toolkit Exists</h2>
+            <p>Most private music teachers chronically undercharge because they only think about "lesson time." But you're not just teaching for 30 minutes—you're prepping materials, answering parent emails, tracking attendance, continuing your own education, and managing a small business.</p>
+            <p><strong>The truth:</strong> If you charge $40 for a 30-minute lesson, you're probably making $15-20 per hour when you factor in everything else. That's less than many retail jobs, and you deserve better.</p>
+            <p>This toolkit helps you calculate your <strong>true hourly rate</strong>, figure out exactly how many students you need to hit your financial goals, price competitively without undervaluing yourself, and build a smart student acquisition strategy that doesn't waste time or money.</p>
+            <p><strong>You don't need 50 students.</strong> You need the RIGHT number of students at the RIGHT price doing work you love. Let's figure out what that looks like for you.</p>
+        </div>
+
+        <div class="quick-start">
+            <h2>🚀 Quick Start Guide</h2>
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-text">
+                    <strong>Calculate Your True Hourly Rate</strong>
+                    <p>Discover what you're ACTUALLY earning per hour when you include prep time, admin, and all hidden costs.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-text">
+                    <strong>Plan Your Student Capacity</strong>
+                    <p>Figure out exactly how many students you need (and can realistically handle) to hit your income goal.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-text">
+                    <strong>Test Pricing Strategies</strong>
+                    <p>Compare different pricing models to find your competitive sweet spot that maximizes profit.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-text">
+                    <strong>Build Your Student Acquisition Plan</strong>
+                    <p>Get a customized marketing strategy based on how many students you actually need to attract.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">5</div>
+                <div class="step-text">
+                    <strong>Track Your Referral Sources</strong>
+                    <p>Measure which marketing channels work best so you can focus your energy where it counts.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: #2c3e50; font-size: 2em; text-align: center; margin-bottom: 30px; font-weight: 700;">📚 Your Toolkit</h2>
+
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">⏱️</div>
+                <h3>True Hourly Rate Calculator</h3>
+                <p>Calculate what you ACTUALLY earn per hour when you factor in prep time, administrative work, materials, and all the hidden costs of teaching.</p>
+                <a href="true-hourly-rate.html" class="tool-button">Calculate My Real Rate</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">👥</div>
+                <h3>Student Capacity Planner</h3>
+                <p>Figure out exactly how many students you need to hit your financial goals—and whether you can realistically handle that load without burnout.</p>
+                <a href="student-capacity-planner.html" class="tool-button">Plan My Student Load</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">💰</div>
+                <h3>Pricing Strategy Calculator</h3>
+                <p>Compare different pricing models (lesson length, packages, student level) to find your competitive sweet spot that maximizes profit.</p>
+                <a href="pricing-strategy.html" class="tool-button">Optimize My Pricing</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">📣</div>
+                <h3>Student Acquisition Strategy</h3>
+                <p>Get a customized marketing plan based on your student need. Word-of-mouth only? Facebook groups? Paid ads? Know where to focus.</p>
+                <a href="student-acquisition-strategy.html" class="tool-button">Build My Marketing Plan</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">📊</div>
+                <h3>Referral Tracker</h3>
+                <p>Track where your students come from and measure conversion rates so you know which marketing channels actually work for you.</p>
+                <a href="referral-tracker.html" class="tool-button">Track My Sources</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Connect with Alayna Marie:</strong></p>
+            <p>🔗 <a href="https://linktr.ee/alaynamarieweimer" target="_blank">linktr.ee/alaynamarieweimer</a></p>
+            <p style="margin-top: 20px;">Need professional support as you grow?</p>
+            <p><strong>Nonprofit Resources:</strong> <a href="https://igniteempowermentfoundation.org" target="_blank">igniteempowermentfoundation.org</a></p>
+            <p><strong>Fractional Services:</strong> <a href="https://www.ignitepositivechanges.com" target="_blank">www.ignitepositivechanges.com</a></p>
+            <p class="brand-name">Discover Your Success with Alayna Marie</p>
+            <p class="copyright">© 2025 Alayna Marie Weimer. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_PASSWORD = "TeachWithProfit2025";
+        window.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('musicTeacherAuth') === 'true') {
+                document.getElementById('passwordOverlay').classList.add('hidden');
+            }
+        });
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === CORRECT_PASSWORD) {
+                sessionStorage.setItem('musicTeacherAuth', 'true');
+                document.getElementById('passwordOverlay').classList.add('hidden');
+            } else {
+                document.getElementById('errorMessage').classList.add('show');
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+        document.getElementById('passwordInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+    </script>
+</body>
+</html>

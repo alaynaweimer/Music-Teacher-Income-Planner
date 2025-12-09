@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Acquisition Strategy - Discover Your Success with Alayna Marie</title>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  STUDENT ACQUISITION STRATEGY - MUSIC TEACHERS
+  Copyright © 2025 Alayna Marie Weimer. All Rights Reserved.
+  BRAND: Discover Your Success with Alayna Marie
+  For inquiries: alayna@ignitepositivechanges.com
+═══════════════════════════════════════════════════════════════════════
+-->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 50%, #E76F51 100%);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        #passwordOverlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 50%, #E76F51 100%);
+            display: flex; align-items: center; justify-content: center; z-index: 9999;
+        }
+        #passwordOverlay.hidden { display: none; }
+        .password-box {
+            background: white; padding: 40px; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); max-width: 400px; width: 90%; text-align: center;
+        }
+        .password-box h2 { color: #2c3e50; margin-bottom: 10px; font-size: 1.8em; }
+        .password-box p { color: #666; margin-bottom: 30px; }
+        .password-box input {
+            width: 100%; padding: 15px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-size: 1.1em; margin-bottom: 20px;
+        }
+        .password-box input:focus { outline: none; border-color: #F4A261; }
+        .password-box button {
+            width: 100%; background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            color: #2c3e50; border: none; padding: 15px; font-size: 1.1em;
+            border-radius: 10px; cursor: pointer; font-weight: 700;
+        }
+        .error-message { color: #dc2626; margin-top: 15px; font-size: 0.9em; display: none; }
+        .error-message.show { display: block; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .header {
+            background: white; border-radius: 20px; padding: 30px 20px;
+            text-align: center; margin-bottom: 30px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .back-link {
+            display: inline-block; color: #F4A261; text-decoration: none;
+            margin-bottom: 15px; font-weight: 600;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .logo-text {
+            font-size: 2.5em; font-weight: 700; color: #2c3e50; margin-bottom: 10px;
+        }
+        .logo-subtitle { font-size: 1.2em; color: #F4A261; font-weight: 600; margin-bottom: 20px; }
+        .header h1 { color: #2c3e50; font-size: 2.2em; margin-bottom: 10px; font-weight: 700; }
+        .why-matters {
+            background: white; border-radius: 15px; padding: 35px; margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border-top: 5px solid #FFD93D;
+        }
+        .why-matters h2 { color: #2c3e50; font-size: 1.8em; margin-bottom: 20px; font-weight: 700; }
+        .why-matters p { color: #2c3e50; font-size: 1.05em; margin-bottom: 15px; line-height: 1.7; }
+        .why-matters strong { color: #F4A261; }
+        .benefits-banner {
+            background: linear-gradient(180deg, #ffffff 0%, #FFE8CC 50%);
+            border: 3px solid #FFD93D; border-radius: 15px; padding: 30px; margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.3);
+        }
+        .benefits-banner h2 {
+            color: #2c3e50; font-size: 1.6em; margin-bottom: 20px; text-align: center; font-weight: 700;
+        }
+        .benefit-item {
+            display: flex; align-items: start; margin: 15px 0; padding: 12px;
+            background: white; border-radius: 10px; border-left: 4px solid #F4A261;
+        }
+        .benefit-icon { font-size: 1.5em; margin-right: 15px; min-width: 30px; }
+        .benefit-text strong { color: #2c3e50; display: block; margin-bottom: 5px; }
+        .benefit-text p { color: #666; margin: 0; }
+        .content-box {
+            background: white; border-radius: 15px; padding: 40px;
+            margin-bottom: 30px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 30px; padding: 25px; background: #f8f9fa;
+            border-radius: 12px; border-left: 5px solid #F4A261;
+        }
+        .section h2 { color: #2c3e50; font-size: 1.5em; margin-bottom: 20px; font-weight: 700; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600; font-size: 1.05em; }
+        .help-text { font-size: 0.85em; color: #666; margin-top: 4px; font-style: italic; }
+        input[type="number"] {
+            width: 100%; padding: 14px; border: 2px solid #e0e0e0;
+            border-radius: 8px; font-size: 1em; transition: border-color 0.3s;
+        }
+        input:focus { outline: none; border-color: #F4A261; box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.1); }
+        .calculate-btn {
+            width: 100%; background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            color: #2c3e50; border: none; padding: 18px; font-size: 1.3em;
+            border-radius: 12px; cursor: pointer; font-weight: 700; margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .calculate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(244, 162, 97, 0.4); }
+        .results { display: none; margin-top: 30px; }
+        .results.show { display: block; }
+        .summary-header {
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.3);
+        }
+        .summary-header h2 { color: #2c3e50; font-size: 2em; margin-bottom: 10px; font-weight: 700; }
+        .summary-header p { color: #2c3e50; font-size: 1.1em; }
+        .channel-card {
+            background: white; padding: 30px; border-radius: 15px;
+            margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #F4A261;
+        }
+        .channel-card.priority { border-left-color: #10b981; }
+        .channel-card.optional { border-left-color: #94a3b8; }
+        .channel-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0;
+        }
+        .channel-title { display: flex; align-items: center; }
+        .channel-icon { font-size: 2em; margin-right: 15px; }
+        .channel-name h3 { color: #2c3e50; font-size: 1.5em; margin-bottom: 5px; font-weight: 700; }
+        .channel-type { font-size: 0.9em; color: #666; }
+        .priority-badge {
+            background: #10b981; color: white; padding: 5px 12px;
+            border-radius: 20px; font-size: 0.85em; font-weight: 700;
+            text-transform: uppercase;
+        }
+        .priority-badge.optional { background: #94a3b8; }
+        .channel-metrics {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px; margin-bottom: 20px;
+        }
+        .metric-box {
+            background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;
+        }
+        .metric-box .label { font-size: 0.85em; color: #666; margin-bottom: 5px; }
+        .metric-box .value { font-size: 1.5em; font-weight: bold; color: #2c3e50; }
+        .action-steps {
+            background: #e3f2fd; padding: 20px; border-radius: 10px;
+        }
+        .action-steps h4 { color: #1976d2; margin-bottom: 15px; font-size: 1.1em; }
+        .action-steps ol { margin-left: 20px; }
+        .action-steps li { color: #2c3e50; margin: 10px 0; line-height: 1.6; }
+        .timeline {
+            background: white; padding: 30px; border-radius: 15px;
+            margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .timeline h3 { color: #2c3e50; margin-bottom: 20px; font-size: 1.5em; font-weight: 700; }
+        .timeline-item {
+            display: flex; align-items: start; padding: 20px;
+            margin-bottom: 15px; background: #f8f9fa; border-radius: 10px;
+            border-left: 5px solid #F4A261;
+        }
+        .timeline-week {
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            color: #2c3e50; font-weight: bold; font-size: 1.1em;
+            min-width: 80px; padding: 10px; border-radius: 8px;
+            text-align: center; margin-right: 20px;
+        }
+        .timeline-content { flex: 1; }
+        .timeline-content strong { color: #2c3e50; display: block; margin-bottom: 8px; font-size: 1.05em; }
+        .timeline-content p { color: #666; margin: 0; }
+        .tip-box {
+            background: #e3f2fd; border-left: 5px solid #2196f3; padding: 25px;
+            border-radius: 10px; margin-top: 25px;
+        }
+        .tip-box strong { color: #1976d2; display: block; margin-bottom: 15px; font-size: 1.15em; }
+        .tip-box p { color: #2c3e50; margin: 12px 0; line-height: 1.7; }
+        .footer {
+            background: white; border-radius: 15px; padding: 30px; margin-top: 30px;
+            text-align: center; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .footer p { color: #666; margin: 8px 0; }
+        .footer a { color: #F4A261; text-decoration: none; font-weight: 600; }
+        .footer a:hover { text-decoration: underline; }
+        .footer .brand-name { color: #2c3e50; font-weight: 700; font-size: 1.2em; margin-top: 15px; }
+        .footer .copyright { color: #999; font-size: 0.9em; margin-top: 10px; }
+        @media (max-width: 768px) {
+            .logo-text { font-size: 1.8em; }
+            .header h1 { font-size: 1.6em; }
+            .channel-header { flex-direction: column; align-items: flex-start; }
+            .priority-badge { margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="passwordOverlay">
+        <div class="password-box">
+            <h2>🔐 Access Required</h2>
+            <p>Enter your toolkit password to access this tool</p>
+            <input type="password" id="passwordInput" placeholder="Enter password">
+            <button onclick="checkPassword()">Unlock Tool</button>
+            <div id="errorMessage" class="error-message">❌ Incorrect password. Please try again.</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <a href="music-teacher-index.html" class="back-link">← Back to Toolkit Hub</a>
+            <div class="logo-text">Discover Your Success</div>
+            <div class="logo-subtitle">with Alayna Marie</div>
+            <h1>📣 Student Acquisition Strategy</h1>
+        </div>
+
+        <div class="why-matters">
+            <h2>🎯 Why This Matters</h2>
+            <p>Most music teachers approach student acquisition backwards. They blast marketing everywhere, hoping something sticks. Or worse, they do nothing and wonder why the phone isn't ringing.</p>
+            <p>The reality is this: <strong>your marketing strategy should match your student need.</strong> If you only need 3 more students, posting in Facebook groups and asking current families for referrals is enough. If you need 20 students, you'll need a multi-channel approach with paid advertising.</p>
+            <p><strong>The Problem:</strong> Teachers waste time and money on marketing channels that don't match their goals. They pay for Google Ads when word-of-mouth would suffice. Or they rely solely on referrals when they actually need aggressive outreach to fill their schedule.</p>
+            <p>This tool creates a customized acquisition plan based on how many students you need, factoring in realistic conversion rates and timelines. No more guessing—just a clear roadmap to hit your student target.</p>
+        </div>
+
+        <div class="benefits-banner">
+            <h2>✨ What You'll Get</h2>
+            <div class="benefit-item">
+                <div class="benefit-icon">🎯</div>
+                <div class="benefit-text">
+                    <strong>Custom Marketing Plan</strong>
+                    <p>Tailored strategy based on exactly how many students you need</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">📊</div>
+                <div class="benefit-text">
+                    <strong>Referral Math</strong>
+                    <p>Know how many inquiries and marketing touches you need to generate</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-text">
+                    <strong>Cost-Effective Channels</strong>
+                    <p>Prioritized list from free word-of-mouth to paid advertising</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">⏰</div>
+                <div class="benefit-text">
+                    <strong>Realistic Timeline</strong>
+                    <p>Week-by-week action plan to reach your student goal</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <div class="section">
+                <h2>📝 Your Student Need</h2>
+                
+                <div class="form-group">
+                    <label>Current Number of Students</label>
+                    <input type="number" id="currentStudents" placeholder="8">
+                </div>
+
+                <div class="form-group">
+                    <label>Target Number of Students</label>
+                    <input type="number" id="targetStudents" placeholder="15">
+                    <div class="help-text">How many total students do you want?</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Timeline to Reach Goal (weeks)</label>
+                    <input type="number" id="timeline" placeholder="12" step="1">
+                    <div class="help-text">How quickly do you need to reach your target?</div>
+                </div>
+
+                <button class="calculate-btn" onclick="generateStrategy()">Create My Marketing Plan</button>
+            </div>
+
+            <div id="results" class="results">
+                <div class="summary-header">
+                    <h2>🎯 Your Personalized Marketing Strategy</h2>
+                    <p id="strategySummary"></p>
+                </div>
+
+                <div id="channelsContent">
+                    <!-- Marketing channels will be inserted here -->
+                </div>
+
+                <div class="timeline">
+                    <h3>📅 Your 12-Week Action Timeline</h3>
+                    <div id="timelineContent">
+                        <!-- Timeline items will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Making Your Marketing Work</strong>
+                    <p><strong>Conversion Rates Are Real:</strong> Not everyone who inquires becomes a student. Expect 30-50% conversion from inquiry to first lesson. Factor this into your outreach goals.</p>
+                    <p><strong>Consistency Beats Intensity:</strong> Better to post in one Facebook group twice a week for 3 months than blast 10 groups once. Build relationships, not spam.</p>
+                    <p><strong>Track Everything:</strong> Ask every new student "How did you hear about me?" Use the Referral Tracker tool to identify your best channels and double down on what works.</p>
+                    <p><strong>Referrals Are Gold:</strong> A referred student converts at 60-80% (vs 30% for cold leads) and stays longer. Always ask happy families if they know anyone looking for lessons.</p>
+                    <p><strong>Free Channels First:</strong> Exhaust word-of-mouth, community groups, and school partnerships before paying for ads. These build sustainable, long-term student pipelines.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Connect with Alayna Marie:</strong></p>
+            <p>🔗 <a href="https://linktr.ee/alaynamarieweimer" target="_blank">linktr.ee/alaynamarieweimer</a></p>
+            <p style="margin-top: 20px;">Need professional support as you grow?</p>
+            <p><strong>Nonprofit Resources:</strong> <a href="https://igniteempowermentfoundation.org" target="_blank">igniteempowermentfoundation.org</a></p>
+            <p><strong>Fractional Services:</strong> <a href="https://www.ignitepositivechanges.com" target="_blank">www.ignitepositivechanges.com</a></p>
+            <p class="brand-name">Discover Your Success with Alayna Marie</p>
+            <p class="copyright">© 2025 Alayna Marie Weimer. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_PASSWORD = "TeachWithProfit2025";
+        window.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('musicTeacherAuth') === 'true') {
+                document.getElementById('passwordOverlay').classList.add('hidden');
+            }
+        });
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === CORRECT_PASSWORD) {
+                sessionStorage.setItem('musicTeacherAuth', 'true');
+                document.getElementById('passwordOverlay').classList.add('hidden');
+            } else {
+                document.getElementById('errorMessage').classList.add('show');
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+        document.getElementById('passwordInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+
+        function generateStrategy() {
+            const current = parseInt(document.getElementById('currentStudents').value) || 0;
+            const target = parseInt(document.getElementById('targetStudents').value) || 0;
+            const timeline = parseInt(document.getElementById('timeline').value) || 12;
+
+            if (!target || target <= current) {
+                alert('Please enter a target number of students greater than your current count.');
+                return;
+            }
+
+            const studentsNeeded = target - current;
+            const avgConversionRate = 0.40; // 40% average
+            const inquiriesNeeded = Math.ceil(studentsNeeded / avgConversionRate);
+
+            // Update summary
+            document.getElementById('strategySummary').textContent = 
+                `You need ${studentsNeeded} more students in ${timeline} weeks. That means generating ${inquiriesNeeded} qualified inquiries (assuming 40% conversion rate).`;
+
+            // Determine marketing strategy based on students needed
+            let channels = [];
+
+            // ALWAYS include: Word of Mouth (for any number)
+            channels.push({
+                name: 'Word-of-Mouth Referrals',
+                icon: '💬',
+                type: 'Free | High Conversion (60-80%)',
+                priority: true,
+                expectedStudents: Math.min(studentsNeeded, Math.ceil(studentsNeeded * 0.4)),
+                cost: '$0',
+                timeInvestment: '1-2 hours/week',
+                conversionRate: '60-80%',
+                actions: [
+                    'Ask every current family: "Do you know anyone looking for music lessons?" Include this in every email and at recitals.',
+                    'Create referral cards to hand to students/parents: "Give this to a friend and you both get $10 off next month\'s lessons."',
+                    'Follow up with past students/families who left on good terms—life circumstances change and they may know someone.',
+                    'Post on your personal Facebook: "I have openings for new students starting in [month]. Know anyone interested?"',
+                    'Thank referrers publicly (with permission) to encourage more referrals.'
+                ]
+            });
+
+            // 1-5 students: Word-of-mouth only
+            if (studentsNeeded <= 5) {
+                document.getElementById('strategySummary').textContent += 
+                    ' Great news—you can likely fill this through word-of-mouth and community connections alone!';
+            }
+
+            // 3+ students: Add Facebook Groups
+            if (studentsNeeded >= 3) {
+                channels.push({
+                    name: 'Facebook Community Groups',
+                    icon: '👥',
+                    type: 'Free | Medium Conversion (20-30%)',
+                    priority: studentsNeeded >= 6,
+                    expectedStudents: Math.ceil(studentsNeeded * 0.3),
+                    cost: '$0',
+                    timeInvestment: '2-3 hours/week',
+                    conversionRate: '20-30%',
+                    actions: [
+                        'Join local parent groups, neighborhood groups, and homeschool groups in your area (search "[Your City] Parents" or "[Neighborhood] Community").',
+                        'Post 2x per week (not more—avoid spam): "Hi! I\'m a [instrument] teacher with [X] years experience. I have openings for students ages [X-X]. Message me if interested!"',
+                        'Include a testimonial or photo of a student performing (with parent permission) to build credibility.',
+                        'Engage genuinely in the group—answer parenting questions, be helpful. This builds trust before you post about lessons.',
+                        'Pin your post to the top of your profile so people can easily find your offering.'
+                    ]
+                });
+            }
+
+            // 5+ students: Add School Partnerships
+            if (studentsNeeded >= 5) {
+                channels.push({
+                    name: 'School & Community Partnerships',
+                    icon: '🏫',
+                    type: 'Free | Medium Conversion (25-35%)',
+                    priority: studentsNeeded >= 8,
+                    expectedStudents: Math.ceil(studentsNeeded * 0.25),
+                    cost: '$0-50 (for flyers)',
+                    timeInvestment: '3-4 hours upfront, then passive',
+                    conversionRate: '25-35%',
+                    actions: [
+                        'Email elementary/middle school music teachers: "I\'m a private [instrument] teacher offering lessons. May I leave flyers for interested families?"',
+                        'Attend school music concerts and introduce yourself to families afterwards. Have business cards ready.',
+                        'Offer a free "Introduction to [Instrument]" workshop at local libraries, community centers, or schools to showcase your teaching.',
+                        'Partner with music stores—ask to leave business cards at the counter or bulletin board.',
+                        'Contact homeschool co-ops and offer group lessons or workshops.'
+                    ]
+                });
+            }
+
+            // 8+ students: Add Website/Online Presence
+            if (studentsNeeded >= 8) {
+                channels.push({
+                    name: 'Website & Google Business Profile',
+                    icon: '🌐',
+                    type: 'Low Cost | Medium Conversion (15-25%)',
+                    priority: studentsNeeded >= 12,
+                    expectedStudents: Math.ceil(studentsNeeded * 0.2),
+                    cost: '$50-150 (domain + simple site)',
+                    timeInvestment: '10-15 hours setup, 1 hour/month maintenance',
+                    conversionRate: '15-25%',
+                    actions: [
+                        'Create free Google Business Profile: google.com/business. Add your teaching location, hours, photos, and ask happy families for reviews.',
+                        'Build simple website using Wix, Squarespace, or WordPress: include bio, rates, testimonials, and contact form.',
+                        'Optimize for local SEO: Use phrases like "[Instrument] lessons in [Your City]" throughout your site.',
+                        'Post regularly (2x/month) on your Google Business Profile—student achievements, practice tips, or openings.',
+                        'Collect 5-10 Google reviews from current families—this massively boosts local search visibility.'
+                    ]
+                });
+            }
+
+            // 12+ students: Consider Paid Ads
+            if (studentsNeeded >= 12) {
+                channels.push({
+                    name: 'Paid Advertising (Google/Facebook)',
+                    icon: '💰',
+                    type: 'Paid | Variable Conversion (10-20%)',
+                    priority: false,
+                    expectedStudents: Math.ceil(studentsNeeded * 0.15),
+                    cost: '$200-500/month',
+                    timeInvestment: '5-8 hours setup, 2 hours/week management',
+                    conversionRate: '10-20%',
+                    actions: [
+                        'Start with Google Local Service Ads (if available in your area)—pay per lead, not per click. Easiest entry point.',
+                        'Facebook Ads: Target parents ages 30-50 within 10 miles with interest in music, education, or parenting. Budget $10-20/day.',
+                        'Create simple ad: Photo of you teaching + "Now Accepting New [Instrument] Students | Ages [X-X] | [Your City] | Book Free Trial"',
+                        'Track cost per lead religiously—if you\'re paying $50+ per inquiry, your ad targeting or landing page needs work.',
+                        'Run ads for 30 days minimum before judging effectiveness. Optimize based on which ads get clicks/inquiries.'
+                    ]
+                });
+            }
+
+            // Render channels
+            const channelsHtml = channels.map(channel => `
+                <div class="channel-card ${channel.priority ? 'priority' : 'optional'}">
+                    <div class="channel-header">
+                        <div class="channel-title">
+                            <div class="channel-icon">${channel.icon}</div>
+                            <div class="channel-name">
+                                <h3>${channel.name}</h3>
+                                <div class="channel-type">${channel.type}</div>
+                            </div>
+                        </div>
+                        <div class="priority-badge ${channel.priority ? '' : 'optional'}">
+                            ${channel.priority ? 'PRIORITY' : 'OPTIONAL'}
+                        </div>
+                    </div>
+                    
+                    <div class="channel-metrics">
+                        <div class="metric-box">
+                            <div class="label">Expected Students</div>
+                            <div class="value">${channel.expectedStudents}</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="label">Cost</div>
+                            <div class="value">${channel.cost}</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="label">Time Investment</div>
+                            <div class="value">${channel.timeInvestment}</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="label">Conversion Rate</div>
+                            <div class="value">${channel.conversionRate}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-steps">
+                        <h4>🎯 Action Steps:</h4>
+                        <ol>
+                            ${channel.actions.map(action => `<li>${action}</li>`).join('')}
+                        </ol>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('channelsContent').innerHTML = channelsHtml;
+
+            // Generate timeline
+            const weeksPerPhase = Math.max(2, Math.floor(timeline / 4));
+            const timelineItems = [
+                {
+                    week: 'Week 1-2',
+                    title: 'Setup & Launch',
+                    detail: 'Create marketing materials (business cards, flyers, social media graphics). Set up Google Business Profile if needed. Draft your referral request script.'
+                },
+                {
+                    week: `Week ${weeksPerPhase + 1}-${weeksPerPhase * 2}`,
+                    title: 'Active Outreach',
+                    detail: 'Begin posting in Facebook groups. Ask current families for referrals. Contact schools/community centers. Launch your priority marketing channels.'
+                },
+                {
+                    week: `Week ${weeksPerPhase * 2 + 1}-${weeksPerPhase * 3}`,
+                    title: 'Optimize & Scale',
+                    detail: 'Track which channels are generating inquiries. Double down on what works. Adjust messaging based on questions you\'re getting. Launch secondary channels if needed.'
+                },
+                {
+                    week: `Week ${weeksPerPhase * 3 + 1}+`,
+                    title: 'Maintain & Convert',
+                    detail: 'Continue consistent marketing on successful channels. Follow up with warm leads. Schedule trial lessons. Focus on converting inquiries to enrolled students.'
+                }
+            ];
+
+            const timelineHtml = timelineItems.map(item => `
+                <div class="timeline-item">
+                    <div class="timeline-week">${item.week}</div>
+                    <div class="timeline-content">
+                        <strong>${item.title}</strong>
+                        <p>${item.detail}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('timelineContent').innerHTML = timelineHtml;
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>

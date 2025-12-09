@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Strategy Calculator - Discover Your Success with Alayna Marie</title>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  PRICING STRATEGY CALCULATOR - MUSIC TEACHERS
+  Copyright © 2025 Alayna Marie Weimer. All Rights Reserved.
+  BRAND: Discover Your Success with Alayna Marie
+  For inquiries: alayna@ignitepositivechanges.com
+═══════════════════════════════════════════════════════════════════════
+-->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 50%, #E76F51 100%);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        #passwordOverlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 50%, #E76F51 100%);
+            display: flex; align-items: center; justify-content: center; z-index: 9999;
+        }
+        #passwordOverlay.hidden { display: none; }
+        .password-box {
+            background: white; padding: 40px; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); max-width: 400px; width: 90%; text-align: center;
+        }
+        .password-box h2 { color: #2c3e50; margin-bottom: 10px; font-size: 1.8em; }
+        .password-box p { color: #666; margin-bottom: 30px; }
+        .password-box input {
+            width: 100%; padding: 15px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-size: 1.1em; margin-bottom: 20px;
+        }
+        .password-box input:focus { outline: none; border-color: #F4A261; }
+        .password-box button {
+            width: 100%; background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            color: #2c3e50; border: none; padding: 15px; font-size: 1.1em;
+            border-radius: 10px; cursor: pointer; font-weight: 700;
+        }
+        .error-message { color: #dc2626; margin-top: 15px; font-size: 0.9em; display: none; }
+        .error-message.show { display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header {
+            background: white; border-radius: 20px; padding: 30px 20px;
+            text-align: center; margin-bottom: 30px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .back-link {
+            display: inline-block; color: #F4A261; text-decoration: none;
+            margin-bottom: 15px; font-weight: 600;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .logo-text {
+            font-size: 2.5em; font-weight: 700; color: #2c3e50; margin-bottom: 10px;
+        }
+        .logo-subtitle { font-size: 1.2em; color: #F4A261; font-weight: 600; margin-bottom: 20px; }
+        .header h1 { color: #2c3e50; font-size: 2.2em; margin-bottom: 10px; font-weight: 700; }
+        .why-matters {
+            background: white; border-radius: 15px; padding: 35px; margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border-top: 5px solid #FFD93D;
+        }
+        .why-matters h2 { color: #2c3e50; font-size: 1.8em; margin-bottom: 20px; font-weight: 700; }
+        .why-matters p { color: #2c3e50; font-size: 1.05em; margin-bottom: 15px; line-height: 1.7; }
+        .why-matters strong { color: #F4A261; }
+        .benefits-banner {
+            background: linear-gradient(180deg, #ffffff 0%, #FFE8CC 50%);
+            border: 3px solid #FFD93D; border-radius: 15px; padding: 30px; margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.3);
+        }
+        .benefits-banner h2 {
+            color: #2c3e50; font-size: 1.6em; margin-bottom: 20px; text-align: center; font-weight: 700;
+        }
+        .benefit-item {
+            display: flex; align-items: start; margin: 15px 0; padding: 12px;
+            background: white; border-radius: 10px; border-left: 4px solid #F4A261;
+        }
+        .benefit-icon { font-size: 1.5em; margin-right: 15px; min-width: 30px; }
+        .benefit-text strong { color: #2c3e50; display: block; margin-bottom: 5px; }
+        .benefit-text p { color: #666; margin: 0; }
+        .content-box {
+            background: white; border-radius: 15px; padding: 40px;
+            margin-bottom: 30px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 30px; padding: 25px; background: #f8f9fa;
+            border-radius: 12px; border-left: 5px solid #F4A261;
+        }
+        .section h2 { color: #2c3e50; font-size: 1.5em; margin-bottom: 20px; font-weight: 700; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600; font-size: 1.05em; }
+        .help-text { font-size: 0.85em; color: #666; margin-top: 4px; font-style: italic; }
+        input[type="number"] {
+            width: 100%; padding: 14px; border: 2px solid #e0e0e0;
+            border-radius: 8px; font-size: 1em; transition: border-color 0.3s;
+        }
+        input:focus { outline: none; border-color: #F4A261; box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.1); }
+        .calculate-btn {
+            width: 100%; background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            color: #2c3e50; border: none; padding: 18px; font-size: 1.3em;
+            border-radius: 12px; cursor: pointer; font-weight: 700; margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .calculate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(244, 162, 97, 0.4); }
+        .results { display: none; margin-top: 30px; }
+        .results.show { display: block; }
+        .comparison-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; margin-bottom: 30px;
+        }
+        .strategy-card {
+            background: white; border-radius: 15px; padding: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); position: relative;
+            border-top: 5px solid #F4A261;
+        }
+        .strategy-card.winner {
+            border-top-color: #10b981;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+        .winner-badge {
+            position: absolute; top: 15px; right: 15px;
+            background: #10b981; color: white; padding: 5px 12px;
+            border-radius: 20px; font-size: 0.8em; font-weight: 700;
+            text-transform: uppercase;
+        }
+        .strategy-card h3 {
+            color: #2c3e50; font-size: 1.4em; margin-bottom: 20px;
+            font-weight: 700; padding-right: 80px;
+        }
+        .price-display {
+            font-size: 2.2em; color: #F4A261; font-weight: bold;
+            margin-bottom: 15px; text-align: center;
+        }
+        .metric-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px; margin-bottom: 10px; background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .metric-row .label { color: #666; font-weight: 600; font-size: 0.95em; }
+        .metric-row .value { font-weight: bold; color: #2c3e50; font-size: 1.05em; }
+        .metric-row.highlight {
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+        }
+        .metric-row.highlight .label,
+        .metric-row.highlight .value { color: #2c3e50; }
+        .tip-box {
+            background: #e3f2fd; border-left: 5px solid #2196f3; padding: 25px;
+            border-radius: 10px; margin-top: 25px;
+        }
+        .tip-box strong { color: #1976d2; display: block; margin-bottom: 15px; font-size: 1.15em; }
+        .tip-box p { color: #2c3e50; margin: 12px 0; line-height: 1.7; }
+        .footer {
+            background: white; border-radius: 15px; padding: 30px; margin-top: 30px;
+            text-align: center; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .footer p { color: #666; margin: 8px 0; }
+        .footer a { color: #F4A261; text-decoration: none; font-weight: 600; }
+        .footer a:hover { text-decoration: underline; }
+        .footer .brand-name { color: #2c3e50; font-weight: 700; font-size: 1.2em; margin-top: 15px; }
+        .footer .copyright { color: #999; font-size: 0.9em; margin-top: 10px; }
+        @media (max-width: 768px) {
+            .logo-text { font-size: 1.8em; }
+            .header h1 { font-size: 1.6em; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .price-display { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div id="passwordOverlay">
+        <div class="password-box">
+            <h2>🔐 Access Required</h2>
+            <p>Enter your toolkit password to access this tool</p>
+            <input type="password" id="passwordInput" placeholder="Enter password">
+            <button onclick="checkPassword()">Unlock Tool</button>
+            <div id="errorMessage" class="error-message">❌ Incorrect password. Please try again.</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <a href="music-teacher-index.html" class="back-link">← Back to Toolkit Hub</a>
+            <div class="logo-text">Discover Your Success</div>
+            <div class="logo-subtitle">with Alayna Marie</div>
+            <h1>💰 Pricing Strategy Calculator</h1>
+        </div>
+
+        <div class="why-matters">
+            <h2>🎯 Why This Matters</h2>
+            <p>Should you charge $35 for 30 minutes or $65 for 60 minutes? Offer package deals or charge per lesson? Charge more for advanced students? These aren't just random decisions—each pricing model fundamentally changes your income, workload, and business sustainability.</p>
+            <p>Most music teachers set one price and never test alternatives. But your pricing strategy directly impacts three critical factors: <strong>your hourly rate, your student retention, and your market competitiveness.</strong></p>
+            <p><strong>The Reality:</strong> A 45-minute lesson at $50 might seem like more money than a 30-minute lesson at $40, but when you factor in prep time and scheduling gaps, the shorter lesson could actually earn you more per hour. Similarly, monthly packages can increase cash flow predictability but might reduce per-lesson rates.</p>
+            <p>This calculator lets you compare different pricing models side-by-side so you can see which strategy maximizes your income while staying competitive in your market.</p>
+        </div>
+
+        <div class="benefits-banner">
+            <h2>✨ What You'll Discover</h2>
+            <div class="benefit-item">
+                <div class="benefit-icon">📊</div>
+                <div class="benefit-text">
+                    <strong>Side-by-Side Comparison</strong>
+                    <p>Compare up to 4 different pricing strategies with full breakdowns</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-text">
+                    <strong>True Hourly Rate per Strategy</strong>
+                    <p>See what you actually earn per hour under each pricing model</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🎯</div>
+                <div class="benefit-text">
+                    <strong>Optimal Strategy Recommendation</strong>
+                    <p>Get a clear winner based on hourly rate and market positioning</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">📈</div>
+                <div class="benefit-text">
+                    <strong>Market Competitiveness Check</strong>
+                    <p>Understand if your rates are too high, too low, or just right</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <div class="section">
+                <h2>🧮 Your Teaching Costs</h2>
+                <p style="color: #666; margin-bottom: 20px;">These stay the same across all strategies</p>
+                
+                <div class="form-group">
+                    <label>Prep Time Per Lesson (minutes)</label>
+                    <input type="number" id="prepTime" placeholder="10" step="5">
+                </div>
+
+                <div class="form-group">
+                    <label>Materials Cost Per Student Per Month</label>
+                    <input type="number" id="materialsCost" step="1" placeholder="5">
+                    <div class="help-text">Sheet music, books, supplies per student monthly average</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💵 Strategy 1: Current Pricing</h2>
+                
+                <div class="form-group">
+                    <label>Lesson Length (minutes)</label>
+                    <input type="number" id="length1" placeholder="30" step="5">
+                </div>
+
+                <div class="form-group">
+                    <label>Price Per Lesson</label>
+                    <input type="number" id="price1" step="0.01" placeholder="40.00">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💵 Strategy 2: Longer Lessons</h2>
+                
+                <div class="form-group">
+                    <label>Lesson Length (minutes)</label>
+                    <input type="number" id="length2" placeholder="45" step="5">
+                </div>
+
+                <div class="form-group">
+                    <label>Price Per Lesson</label>
+                    <input type="number" id="price2" step="0.01" placeholder="55.00">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💵 Strategy 3: Hour-Long Premium</h2>
+                
+                <div class="form-group">
+                    <label>Lesson Length (minutes)</label>
+                    <input type="number" id="length3" placeholder="60" step="5">
+                </div>
+
+                <div class="form-group">
+                    <label>Price Per Lesson</label>
+                    <input type="number" id="price3" step="0.01" placeholder="70.00">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💵 Strategy 4: Monthly Package</h2>
+                
+                <div class="form-group">
+                    <label>Lesson Length (minutes)</label>
+                    <input type="number" id="length4" placeholder="30" step="5">
+                </div>
+
+                <div class="form-group">
+                    <label>Price Per Lesson (if bought as 4-lesson package)</label>
+                    <input type="number" id="price4" step="0.01" placeholder="38.00">
+                    <div class="help-text">Slight discount for commitment, but guaranteed monthly income</div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="compareStrategies()">Compare Pricing Strategies</button>
+
+            <div id="results" class="results">
+                <h2 style="color: #2c3e50; font-size: 2em; margin-bottom: 30px; text-align: center;">📊 Strategy Comparison</h2>
+                
+                <div class="comparison-grid" id="comparisonCards">
+                    <!-- Strategy cards will be inserted here -->
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Making Smart Pricing Decisions</strong>
+                    <p><strong>True Hourly Rate Matters Most:</strong> Don't just look at the lesson price—factor in prep time. A $70/hour lesson with 20 minutes of prep might earn you less per hour than a $40/30-minute lesson with 5 minutes of prep.</p>
+                    <p><strong>Longer Isn't Always Better:</strong> Sixty-minute lessons sound premium, but they're exhausting and limit scheduling flexibility. Many teachers find 30-45 minutes ideal for maintaining energy and maximizing student count.</p>
+                    <p><strong>Package Pricing Pros/Cons:</strong> Monthly packages provide predictable cash flow and reduce no-shows, but slight discounts reduce per-lesson earnings. Worth it if you value stability.</p>
+                    <p><strong>Competitive Research:</strong> Survey local teachers' rates for your instrument and experience level. Pricing 10-20% below market gets you students fast; pricing at market builds sustainable income; pricing 10-20% above market requires exceptional reputation or unique value.</p>
+                    <p><strong>Test Pricing Changes:</strong> Apply new rates to NEW students first. This lets you test without alienating existing students. If 5+ new students accept the rate without hesitation, you're priced correctly (or could go higher!).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Connect with Alayna Marie:</strong></p>
+            <p>🔗 <a href="https://linktr.ee/alaynamarieweimer" target="_blank">linktr.ee/alaynamarieweimer</a></p>
+            <p style="margin-top: 20px;">Need professional support as you grow?</p>
+            <p><strong>Nonprofit Resources:</strong> <a href="https://igniteempowermentfoundation.org" target="_blank">igniteempowermentfoundation.org</a></p>
+            <p><strong>Fractional Services:</strong> <a href="https://www.ignitepositivechanges.com" target="_blank">www.ignitepositivechanges.com</a></p>
+            <p class="brand-name">Discover Your Success with Alayna Marie</p>
+            <p class="copyright">© 2025 Alayna Marie Weimer. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_PASSWORD = "TeachWithProfit2025";
+        window.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('musicTeacherAuth') === 'true') {
+                document.getElementById('passwordOverlay').classList.add('hidden');
+            }
+        });
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === CORRECT_PASSWORD) {
+                sessionStorage.setItem('musicTeacherAuth', 'true');
+                document.getElementById('passwordOverlay').classList.add('hidden');
+            } else {
+                document.getElementById('errorMessage').classList.add('show');
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+        document.getElementById('passwordInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+
+        function calculateStrategy(length, price, prepTime, materialsCost) {
+            const totalTimePerLesson = length + prepTime;
+            const hourlyRate = (price / totalTimePerLesson) * 60;
+            const monthlyIncome = price * 4; // 4 lessons per month
+            const netMonthlyIncome = monthlyIncome - materialsCost;
+            const monthlyHours = (totalTimePerLesson * 4) / 60;
+            const trueHourlyRate = netMonthlyIncome / monthlyHours;
+
+            return {
+                length,
+                price,
+                hourlyRate,
+                monthlyIncome,
+                netMonthlyIncome,
+                totalTimePerLesson,
+                trueHourlyRate
+            };
+        }
+
+        function compareStrategies() {
+            const prepTime = parseFloat(document.getElementById('prepTime').value) || 0;
+            const materialsCost = parseFloat(document.getElementById('materialsCost').value) || 0;
+
+            const length1 = parseFloat(document.getElementById('length1').value) || 0;
+            const price1 = parseFloat(document.getElementById('price1').value) || 0;
+
+            const length2 = parseFloat(document.getElementById('length2').value) || 0;
+            const price2 = parseFloat(document.getElementById('price2').value) || 0;
+
+            const length3 = parseFloat(document.getElementById('length3').value) || 0;
+            const price3 = parseFloat(document.getElementById('price3').value) || 0;
+
+            const length4 = parseFloat(document.getElementById('length4').value) || 0;
+            const price4 = parseFloat(document.getElementById('price4').value) || 0;
+
+            if (!prepTime || !length1 || !price1 || !length2 || !price2 || !length3 || !price3 || !length4 || !price4) {
+                alert('Please fill in all pricing strategies to compare.');
+                return;
+            }
+
+            const strategy1 = calculateStrategy(length1, price1, prepTime, materialsCost);
+            const strategy2 = calculateStrategy(length2, price2, prepTime, materialsCost);
+            const strategy3 = calculateStrategy(length3, price3, prepTime, materialsCost);
+            const strategy4 = calculateStrategy(length4, price4, prepTime, materialsCost);
+
+            const strategies = [
+                { name: 'Strategy 1: Current', label: `${length1}-Min Lessons`, ...strategy1 },
+                { name: 'Strategy 2: Longer', label: `${length2}-Min Lessons`, ...strategy2 },
+                { name: 'Strategy 3: Premium', label: `${length3}-Min Lessons`, ...strategy3 },
+                { name: 'Strategy 4: Package', label: `${length4}-Min Package`, ...strategy4 }
+            ];
+
+            // Find winner (highest true hourly rate)
+            let maxRate = Math.max(strategy1.trueHourlyRate, strategy2.trueHourlyRate, strategy3.trueHourlyRate, strategy4.trueHourlyRate);
+            
+            // Render comparison cards
+            const cardsHtml = strategies.map((s, i) => {
+                const isWinner = s.trueHourlyRate === maxRate;
+                return `
+                    <div class="strategy-card ${isWinner ? 'winner' : ''}">
+                        ${isWinner ? '<div class="winner-badge">🏆 Best Rate</div>' : ''}
+                        <h3>${s.name}</h3>
+                        <div class="price-display">$${s.price.toFixed(2)}</div>
+                        <p style="text-align: center; color: #666; margin-bottom: 20px;">${s.label}</p>
+                        
+                        <div class="metric-row">
+                            <span class="label">Lesson + Prep Time</span>
+                            <span class="value">${s.totalTimePerLesson} min</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="label">Simple Hourly Rate</span>
+                            <span class="value">$${s.hourlyRate.toFixed(2)}</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="label">Monthly Income</span>
+                            <span class="value">$${s.monthlyIncome.toFixed(0)}</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="label">Materials Cost</span>
+                            <span class="value">-$${materialsCost.toFixed(0)}</span>
+                        </div>
+                        <div class="metric-row highlight">
+                            <span class="label">True Hourly Rate</span>
+                            <span class="value">$${s.trueHourlyRate.toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('comparisonCards').innerHTML = cardsHtml;
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
