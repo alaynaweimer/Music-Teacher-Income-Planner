@@ -61,6 +61,27 @@
         }
         .logo-subtitle { font-size: 1.2em; color: #F4A261; font-weight: 600; margin-bottom: 20px; }
         .header h1 { color: #2c3e50; font-size: 2.2em; margin-bottom: 10px; font-weight: 700; }
+        .header p { color: #666; font-size: 1.05em; margin-top: 10px; }
+        
+        .tab-navigation {
+            display: flex; gap: 10px; justify-content: center;
+            margin: 30px 0; flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: white; color: #2c3e50; border: 2px solid #e0e0e0;
+            padding: 15px 30px; border-radius: 12px; cursor: pointer;
+            font-weight: 600; font-size: 1.05em; transition: all 0.3s;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .tab-btn:hover { border-color: #F4A261; transform: translateY(-2px); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            border-color: #F4A261; color: #2c3e50;
+        }
+        .tab-icon { font-size: 1.3em; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
         .why-matters {
             background: white; border-radius: 15px; padding: 35px; margin-bottom: 30px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border-top: 5px solid #FFD93D;
@@ -200,53 +221,27 @@
 
     <div class="container">
         <div class="header">
-            <a href="music-teacher-index.html" class="back-link">← Back to Toolkit Hub</a>
+            <a href="index.html" class="back-link">← Back to Toolkit Hub</a>
             <div class="logo-text">Discover Your Success</div>
             <div class="logo-subtitle">with Alayna Marie</div>
             <h1>⏱️ True Hourly Rate Calculator</h1>
+            <p>Most teachers think they make $60-80/hour, but actually make $20-30 when you include prep time and expenses. Find your real rate in 2 minutes.</p>
         </div>
 
-        <div class="why-matters">
-            <h2>🎯 Why This Matters</h2>
-            <p>You charge $40 for a 30-minute lesson. Simple math says that's $80/hour, right? Wrong.</p>
-            <p>Every lesson requires prep time. You answer parent emails. You order sheet music. You track payments. You continue your own musical education. You maintain your studio space. All of that is <strong>unpaid labor</strong> that cuts into your true hourly rate.</p>
-            <p><strong>The Reality:</strong> Most private music teachers who think they're making $60-80/hour are actually making $20-30/hour when they factor in all the hidden time and costs. That's barely above minimum wage in many states—and you have a specialized skill that deserves better compensation.</p>
-            <p>This calculator reveals your <strong>true hourly rate</strong> so you can make informed decisions about your pricing, student load, and whether your teaching practice is actually profitable.</p>
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('calculator')">
+                <span class="tab-icon">🧮</span> Calculator
+            </button>
+            <button class="tab-btn" onclick="switchTab('results')" id="resultsTab" style="display: none;">
+                <span class="tab-icon">📊</span> Results
+            </button>
+            <button class="tab-btn" onclick="switchTab('learn')">
+                <span class="tab-icon">📚</span> Learn
+            </button>
         </div>
 
-        <div class="benefits-banner">
-            <h2>✨ What You'll Discover</h2>
-            <div class="benefit-item">
-                <div class="benefit-icon">💡</div>
-                <div class="benefit-text">
-                    <strong>Your REAL Hourly Earnings</strong>
-                    <p>See what you actually make per hour after all hidden time is factored in</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">⏰</div>
-                <div class="benefit-text">
-                    <strong>Total Time Investment</strong>
-                    <p>Understand how much time you're really spending per student beyond lesson time</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">💰</div>
-                <div class="benefit-text">
-                    <strong>Hidden Cost Analysis</strong>
-                    <p>Account for materials, studio costs, professional development, and administrative expenses</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">📊</div>
-                <div class="benefit-text">
-                    <strong>Pricing Clarity</strong>
-                    <p>Know if you need to raise rates or if you're priced appropriately for your time</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-box">
+        <!-- CALCULATOR TAB -->
+        <div id="calculatorTab" class="tab-content active">
             <div class="section">
                 <h2>📝 Your Teaching Details</h2>
                 
@@ -316,7 +311,12 @@
 
                 <button class="calculate-btn" onclick="calculateHourlyRate()">Calculate My True Hourly Rate</button>
             </div>
+        </div>
+        <!-- END CALCULATOR TAB -->
 
+        <!-- RESULTS TAB -->
+        <div id="resultsTab" class="tab-content">
+            <div class="content-box">
             <div id="results" class="results">
                 <div class="summary-cards">
                     <div class="summary-card">
@@ -427,7 +427,63 @@
                     <p><strong>Action Step:</strong> Compare your true hourly rate to your local cost of living and professional goals. Would you accept this hourly rate in any other skilled profession? If not, it's time to adjust.</p>
                 </div>
             </div>
+            </div>
         </div>
+        <!-- END RESULTS TAB -->
+
+        <!-- LEARN TAB -->
+        <div id="learnTab" class="tab-content">
+            <div class="why-matters">
+                <h2>🎯 Why This Matters</h2>
+                <p>You charge $40 for a 30-minute lesson. Simple math says that's $80/hour, right? Wrong.</p>
+                <p>Every lesson requires prep time. You answer parent emails. You order sheet music. You track payments. You continue your own musical education. You maintain your studio space. All of that is <strong>unpaid labor</strong> that cuts into your true hourly rate.</p>
+                <p><strong>The Reality:</strong> Most private music teachers who think they're making $60-80/hour are actually making $20-30/hour when they factor in all the hidden time and costs. That's barely above minimum wage in many states—and you have a specialized skill that deserves better compensation.</p>
+                <p>This calculator reveals your <strong>true hourly rate</strong> so you can make informed decisions about your pricing, student load, and whether your teaching practice is actually profitable.</p>
+            </div>
+
+            <div class="benefits-banner">
+                <h2>✨ What You'll Discover</h2>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💡</div>
+                    <div class="benefit-text">
+                        <strong>Your REAL Hourly Earnings</strong>
+                        <p>See what you actually make per hour after all hidden time is factored in</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⏰</div>
+                    <div class="benefit-text">
+                        <strong>Total Time Investment</strong>
+                        <p>Understand how much time you're really spending per student beyond lesson time</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-text">
+                        <strong>Hidden Cost Analysis</strong>
+                        <p>Account for materials, studio costs, professional development, and administrative expenses</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-text">
+                        <strong>Pricing Clarity</strong>
+                        <p>Know if you need to raise rates or if you're priced appropriately for your time</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Understanding Your True Hourly Rate</strong>
+                <p><strong>The Hidden Time Trap:</strong> Teaching a 30-minute lesson actually requires 40-50 minutes of your time when you include prep, setup, parent communication, and transitions between students. Most teachers never account for this.</p>
+                <p><strong>Materials & Supplies Add Up:</strong> Sheet music, method books, pencils, stickers, studio supplies—these costs seem small individually but can eat up $100-200/month across all your students.</p>
+                <p><strong>Studio Costs Are Real:</strong> Whether you teach from home or rent space, there are costs. Home studio? You're paying utilities, insurance, maintenance. Rental space? That's direct cost. Factor it in.</p>
+                <p><strong>Professional Development Matters:</strong> Continuing education, workshops, memberships, and certifications keep you competitive and inspired. They're business expenses that reduce your take-home rate.</p>
+                <p><strong>Administrative Time Is Unpaid Work:</strong> Scheduling, rescheduling, billing, following up on late payments, answering questions—this can easily be 2-4 hours per week for a full studio.</p>
+                <p><strong>Why This Calculation Matters:</strong> Once you know your true hourly rate, you can make informed decisions: raise rates, reduce prep time, cut administrative overhead, or accept that your current model needs adjustment.</p>
+            </div>
+        </div>
+        <!-- END LEARN TAB -->
 
         <div class="footer">
             <p>Need professional support as you grow?</p>
@@ -458,6 +514,31 @@
         document.getElementById('passwordInput')?.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') checkPassword();
         });
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            if (tabName === 'calculator') {
+                document.getElementById('calculatorTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            } else if (tabName === 'results') {
+                document.getElementById('resultsTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            } else if (tabName === 'learn') {
+                document.getElementById('learnTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(3)').classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         function calculateHourlyRate() {
             // Get inputs
@@ -690,7 +771,19 @@
             `).join('');
 
             document.getElementById('recommendations').style.display = 'block';
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            
+            // Show and switch to Results tab
+            document.getElementById('resultsTabBtn').style.display = 'flex';
+            switchTab('results');
         }
+
+        // Make results tab button accessible
+        window.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.tab-btn:nth-child(2)').id = 'resultsTabBtn';
+        });
     </script>
 </body>
 </html>
