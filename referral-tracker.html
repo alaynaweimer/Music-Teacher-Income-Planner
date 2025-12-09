@@ -61,6 +61,27 @@
         }
         .logo-subtitle { font-size: 1.2em; color: #F4A261; font-weight: 600; margin-bottom: 20px; }
         .header h1 { color: #2c3e50; font-size: 2.2em; margin-bottom: 10px; font-weight: 700; }
+        .header p { color: #666; font-size: 1.05em; margin-top: 10px; }
+        
+        .tab-navigation {
+            display: flex; gap: 10px; justify-content: center;
+            margin: 30px 0; flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: white; color: #2c3e50; border: 2px solid #e0e0e0;
+            padding: 15px 30px; border-radius: 12px; cursor: pointer;
+            font-weight: 600; font-size: 1.05em; transition: all 0.3s;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .tab-btn:hover { border-color: #F4A261; transform: translateY(-2px); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            border-color: #F4A261; color: #2c3e50;
+        }
+        .tab-icon { font-size: 1.3em; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
         .why-matters {
             background: white; border-radius: 15px; padding: 35px; margin-bottom: 30px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border-top: 5px solid #FFD93D;
@@ -205,53 +226,27 @@
 
     <div class="container">
         <div class="header">
-            <a href="music-teacher-index.html" class="back-link">← Back to Toolkit Hub</a>
+            <a href="index.html" class="back-link">← Back to Toolkit Hub</a>
             <div class="logo-text">Discover Your Success</div>
             <div class="logo-subtitle">with Alayna Marie</div>
             <h1>📊 Referral Tracker</h1>
+            <p>Track where your students come from and measure conversion rates so you know which marketing channels actually work.</p>
         </div>
 
-        <div class="why-matters">
-            <h2>🎯 Why This Matters</h2>
-            <p>You're spending time and possibly money on marketing. But do you actually know which channels are working? Most teachers have no idea whether their Facebook posts, school flyers, or Google ads are generating students—they're just hoping something works.</p>
-            <p><strong>The reality:</strong> What you measure, you can improve. If you track where every inquiry comes from, you'll discover that maybe 80% of your students come from 20% of your marketing efforts. That means you can double down on what works and stop wasting time on what doesn't.</p>
-            <p><strong>The Problem:</strong> Without tracking, teachers keep investing in low-performing channels out of habit. They post in Facebook groups that never generate inquiries. They pay for ads that bring tire-kickers but no enrollments. They miss opportunities to optimize their best-performing channels.</p>
-            <p>This tracker helps you measure conversion rates by source so you can focus your energy where it actually generates students.</p>
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('calculator')">
+                <span class="tab-icon">📝</span> Tracker
+            </button>
+            <button class="tab-btn" onclick="switchTab('results')" id="resultsTabBtn" style="display: none;">
+                <span class="tab-icon">📊</span> Analysis
+            </button>
+            <button class="tab-btn" onclick="switchTab('learn')">
+                <span class="tab-icon">📚</span> Learn
+            </button>
         </div>
 
-        <div class="benefits-banner">
-            <h2>✨ What You'll Discover</h2>
-            <div class="benefit-item">
-                <div class="benefit-icon">📊</div>
-                <div class="benefit-text">
-                    <strong>Channel Performance Data</strong>
-                    <p>See exactly which marketing sources generate the most students</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">🎯</div>
-                <div class="benefit-text">
-                    <strong>Conversion Rate Analysis</strong>
-                    <p>Know which channels convert inquiries to students most effectively</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">💰</div>
-                <div class="benefit-text">
-                    <strong>ROI Clarity</strong>
-                    <p>Understand which free and paid channels deliver the best return</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">🚀</div>
-                <div class="benefit-text">
-                    <strong>Optimization Recommendations</strong>
-                    <p>Get specific advice on where to focus your marketing efforts</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-box">
+        <!-- TRACKER TAB -->
+        <div id="calculatorTab" class="tab-content active">
             <div class="section">
                 <h2>📝 Track Your Inquiries & Enrollments</h2>
                 <p style="color: #666; margin-bottom: 20px;">For each marketing channel, enter how many inquiries you received and how many became students.</p>
@@ -293,7 +288,12 @@
 
                 <button class="calculate-btn" onclick="analyzeData()" style="margin-top: 30px;">Analyze My Referral Sources</button>
             </div>
+        </div>
+        <!-- END TRACKER TAB -->
 
+        <!-- ANALYSIS TAB -->
+        <div id="resultsTab" class="tab-content">
+            <div class="content-box">
             <div id="results" class="results">
                 <div class="summary-cards">
                     <div class="summary-card">
@@ -333,7 +333,62 @@
                     <p><strong>Kill What's Not Working:</strong> If you've gotten 20+ inquiries from a channel with zero enrollments, that channel isn't working. Stop wasting time there.</p>
                 </div>
             </div>
+            </div>
         </div>
+        <!-- END ANALYSIS TAB -->
+
+        <!-- LEARN TAB -->
+        <div id="learnTab" class="tab-content">
+            <div class="why-matters">
+                <h2>🎯 Why This Matters</h2>
+                <p>You're spending time and possibly money on marketing. But do you actually know which channels are working? Most teachers have no idea whether their Facebook posts, school flyers, or Google ads are generating students—they're just hoping something works.</p>
+                <p><strong>The reality:</strong> What you measure, you can improve. If you track where every inquiry comes from, you'll discover that maybe 80% of your students come from 20% of your marketing efforts. That means you can double down on what works and stop wasting time on what doesn't.</p>
+                <p><strong>The Problem:</strong> Without tracking, teachers keep investing in low-performing channels out of habit. They post in Facebook groups that never generate inquiries. They pay for ads that bring tire-kickers but no enrollments. They miss opportunities to optimize their best-performing channels.</p>
+                <p>This tracker helps you measure conversion rates by source so you can focus your energy where it actually generates students.</p>
+            </div>
+
+            <div class="benefits-banner">
+                <h2>✨ What You'll Discover</h2>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-text">
+                        <strong>Channel Performance Data</strong>
+                        <p>See exactly which marketing sources generate the most students</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-text">
+                        <strong>Conversion Rate Analysis</strong>
+                        <p>Know which channels convert inquiries to students most effectively</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-text">
+                        <strong>ROI Clarity</strong>
+                        <p>Understand which free and paid channels deliver the best return</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🚀</div>
+                    <div class="benefit-text">
+                        <strong>Optimization Recommendations</strong>
+                        <p>Get specific advice on where to focus your marketing efforts</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Tracking Best Practices</strong>
+                <p><strong>Ask Every Single Time:</strong> "How did you hear about me?" should be part of your initial conversation or intake form. No exceptions. No guessing.</p>
+                <p><strong>The 80/20 Rule Is Real:</strong> Most teachers discover that 80% of their students come from 20% of their marketing channels. Once you identify that 20%, double down on it.</p>
+                <p><strong>Conversion Rate Benchmarks:</strong> Word-of-mouth referrals should convert at 60-80%. Facebook groups 20-40%. School partnerships 25-35%. Paid ads 10-30%. If yours are significantly lower, something's wrong with your messaging or trial lesson.</p>
+                <p><strong>Track Over Time:</strong> One month might be an outlier. Track for at least 3 months to see real patterns emerge. Seasonal factors matter too—back-to-school vs summer.</p>
+                <p><strong>Low Conversion = Fix It or Kill It:</strong> If a channel generates lots of inquiries but few students, the problem isn't the channel—it's your follow-up, pricing, or trial lesson quality. Fix those first.</p>
+            </div>
+        </div>
+        <!-- END LEARN TAB -->
 
         <div class="footer">
             <p><strong>Connect with Alayna Marie:</strong></p>
@@ -368,6 +423,31 @@
         document.getElementById('passwordInput')?.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') checkPassword();
         });
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            if (tabName === 'calculator') {
+                document.getElementById('calculatorTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            } else if (tabName === 'results') {
+                document.getElementById('resultsTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            } else if (tabName === 'learn') {
+                document.getElementById('learnTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(3)').classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         function addEntry() {
             const channel = document.getElementById('channelSelect').value;
@@ -513,7 +593,10 @@
 
             // Show results
             document.getElementById('results').classList.add('show');
-            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Show and switch to Analysis tab
+            document.getElementById('resultsTabBtn').style.display = 'flex';
+            switchTab('results');
         }
     </script>
 </body>
