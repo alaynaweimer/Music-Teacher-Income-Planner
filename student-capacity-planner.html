@@ -61,6 +61,27 @@
         }
         .logo-subtitle { font-size: 1.2em; color: #F4A261; font-weight: 600; margin-bottom: 20px; }
         .header h1 { color: #2c3e50; font-size: 2.2em; margin-bottom: 10px; font-weight: 700; }
+        .header p { color: #666; font-size: 1.05em; margin-top: 10px; }
+        
+        .tab-navigation {
+            display: flex; gap: 10px; justify-content: center;
+            margin: 30px 0; flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: white; color: #2c3e50; border: 2px solid #e0e0e0;
+            padding: 15px 30px; border-radius: 12px; cursor: pointer;
+            font-weight: 600; font-size: 1.05em; transition: all 0.3s;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .tab-btn:hover { border-color: #F4A261; transform: translateY(-2px); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            border-color: #F4A261; color: #2c3e50;
+        }
+        .tab-icon { font-size: 1.3em; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
         .why-matters {
             background: white; border-radius: 15px; padding: 35px; margin-bottom: 30px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border-top: 5px solid #FFD93D;
@@ -201,53 +222,27 @@
 
     <div class="container">
         <div class="header">
-            <a href="music-teacher-index.html" class="back-link">← Back to Toolkit Hub</a>
+            <a href="index.html" class="back-link">← Back to Toolkit Hub</a>
             <div class="logo-text">Discover Your Success</div>
             <div class="logo-subtitle">with Alayna Marie</div>
             <h1>👥 Student Capacity Planner</h1>
+            <p>Know exactly how many students you need to hit your income goal—and whether you can realistically handle that load without burnout.</p>
         </div>
 
-        <div class="why-matters">
-            <h2>🎯 Why This Matters</h2>
-            <p>Here's the question every music teacher faces: "How many students do I need?" Most answer with "as many as I can get." But that's the wrong answer.</p>
-            <p>Taking on too many students leads to burnout, declining teaching quality, and ironically—less satisfaction even though you're making more money. Taking on too few students means you're not hitting your financial goals and constantly stressed about money.</p>
-            <p><strong>The truth:</strong> There's a sweet spot—the exact number of students you need to hit your income goal without sacrificing your sanity, teaching quality, or personal life. That number is different for everyone based on their rates, available time, and financial needs.</p>
-            <p>This planner does the math for you. You'll know exactly how many students you need (not "as many as possible"), whether you can realistically handle that load, and if your schedule has room for growth or if you're already at capacity.</p>
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('calculator')">
+                <span class="tab-icon">🧮</span> Calculator
+            </button>
+            <button class="tab-btn" onclick="switchTab('results')" id="resultsTabBtn" style="display: none;">
+                <span class="tab-icon">📊</span> Results
+            </button>
+            <button class="tab-btn" onclick="switchTab('learn')">
+                <span class="tab-icon">📚</span> Learn
+            </button>
         </div>
 
-        <div class="benefits-banner">
-            <h2>✨ What You'll Discover</h2>
-            <div class="benefit-item">
-                <div class="benefit-icon">🎯</div>
-                <div class="benefit-text">
-                    <strong>Your Magic Number</strong>
-                    <p>Exact number of students needed to hit your income goal</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">⏰</div>
-                <div class="benefit-text">
-                    <strong>Realistic Time Assessment</strong>
-                    <p>Whether you can actually handle that student load with your available hours</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">📊</div>
-                <div class="benefit-text">
-                    <strong>Capacity Analysis</strong>
-                    <p>Know if you're underbooked, optimal, or headed for burnout</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">💡</div>
-                <div class="benefit-text">
-                    <strong>Growth Strategy</strong>
-                    <p>Clear path forward—raise rates, add students, or maintain current level</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-box">
+        <!-- CALCULATOR TAB -->
+        <div id="calculatorTab" class="tab-content active">
             <div class="section">
                 <h2>💵 Your Financial Goal</h2>
                 
@@ -323,7 +318,12 @@
 
                 <button class="calculate-btn" onclick="calculateCapacity()">Calculate My Student Capacity</button>
             </div>
+        </div>
+        <!-- END CALCULATOR TAB -->
 
+        <!-- RESULTS TAB -->
+        <div id="resultsTab" class="tab-content">
+            <div class="content-box">
             <div id="results" class="results">
                 <div class="summary-cards">
                     <div class="summary-card">
@@ -429,7 +429,62 @@
                     <p><strong>Strategy Tip:</strong> If you need more income but are at capacity, raising rates 10-15% is far better than adding students. Quality over quantity protects your wellbeing and teaching excellence.</p>
                 </div>
             </div>
+            </div>
         </div>
+        <!-- END RESULTS TAB -->
+
+        <!-- LEARN TAB -->
+        <div id="learnTab" class="tab-content">
+            <div class="why-matters">
+                <h2>🎯 Why This Matters</h2>
+                <p>Here's the question every music teacher faces: "How many students do I need?" Most answer with "as many as I can get." But that's the wrong answer.</p>
+                <p>Taking on too many students leads to burnout, declining teaching quality, and ironically—less satisfaction even though you're making more money. Taking on too few students means you're not hitting your financial goals and constantly stressed about money.</p>
+                <p><strong>The truth:</strong> There's a sweet spot—the exact number of students you need to hit your income goal without sacrificing your sanity, teaching quality, or personal life. That number is different for everyone based on their rates, available time, and financial needs.</p>
+                <p>This planner does the math for you. You'll know exactly how many students you need (not "as many as possible"), whether you can realistically handle that load, and if your schedule has room for growth or if you're already at capacity.</p>
+            </div>
+
+            <div class="benefits-banner">
+                <h2>✨ What You'll Discover</h2>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-text">
+                        <strong>Your Magic Number</strong>
+                        <p>Exact number of students needed to hit your income goal</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⏰</div>
+                    <div class="benefit-text">
+                        <strong>Realistic Time Assessment</strong>
+                        <p>Whether you can actually handle that student load with your available hours</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-text">
+                        <strong>Capacity Analysis</strong>
+                        <p>Know if you're underbooked, optimal, or headed for burnout</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💡</div>
+                    <div class="benefit-text">
+                        <strong>Growth Strategy</strong>
+                        <p>Clear path forward—raise rates, add students, or maintain current level</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Understanding Capacity Planning</strong>
+                <p><strong>The "As Many As Possible" Trap:</strong> Most teachers think more students = more money. But there's a point where adding one more student means declining quality, increased stress, and actually less net income when you factor in burnout recovery time.</p>
+                <p><strong>Budget Gap vs Income Goal:</strong> If you're teaching to "fill a gap" in your household budget, you need fewer students than you think. Don't overbook yourself for money you don't actually need.</p>
+                <p><strong>Time Realism:</strong> Don't just count teaching hours. Every student requires prep, administrative work, and mental bandwidth. Account for ALL of it.</p>
+                <p><strong>The 80% Rule:</strong> Operating at 80-90% capacity is ideal. It gives you buffer room for sick days, student cancellations, and maintaining quality. Running at 100%+ capacity is a recipe for burnout.</p>
+                <p><strong>When You Hit Capacity:</strong> If you're maxed out and need more income, your ONLY option is to raise rates. Adding more students isn't sustainable. Protect your capacity.</p>
+            </div>
+        </div>
+        <!-- END LEARN TAB -->
 
         <div class="footer">
             <p><strong>Connect with Alayna Marie:</strong></p>
@@ -462,6 +517,31 @@
         document.getElementById('passwordInput')?.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') checkPassword();
         });
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            if (tabName === 'calculator') {
+                document.getElementById('calculatorTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            } else if (tabName === 'results') {
+                document.getElementById('resultsTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            } else if (tabName === 'learn') {
+                document.getElementById('learnTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(3)').classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         function selectRadio(groupName, value) {
             document.querySelectorAll(`input[name="${groupName}"]`).forEach(radio => {
@@ -597,7 +677,10 @@
 
             // Show results
             document.getElementById('results').classList.add('show');
-            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Show and switch to Results tab
+            document.getElementById('resultsTabBtn').style.display = 'flex';
+            switchTab('results');
         }
     </script>
 </body>
