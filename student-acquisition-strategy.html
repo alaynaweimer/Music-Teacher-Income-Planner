@@ -61,6 +61,27 @@
         }
         .logo-subtitle { font-size: 1.2em; color: #F4A261; font-weight: 600; margin-bottom: 20px; }
         .header h1 { color: #2c3e50; font-size: 2.2em; margin-bottom: 10px; font-weight: 700; }
+        .header p { color: #666; font-size: 1.05em; margin-top: 10px; }
+        
+        .tab-navigation {
+            display: flex; gap: 10px; justify-content: center;
+            margin: 30px 0; flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: white; color: #2c3e50; border: 2px solid #e0e0e0;
+            padding: 15px 30px; border-radius: 12px; cursor: pointer;
+            font-weight: 600; font-size: 1.05em; transition: all 0.3s;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .tab-btn:hover { border-color: #F4A261; transform: translateY(-2px); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%);
+            border-color: #F4A261; color: #2c3e50;
+        }
+        .tab-icon { font-size: 1.3em; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
         .why-matters {
             background: white; border-radius: 15px; padding: 35px; margin-bottom: 30px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border-top: 5px solid #FFD93D;
@@ -207,53 +228,27 @@
 
     <div class="container">
         <div class="header">
-            <a href="music-teacher-index.html" class="back-link">← Back to Toolkit Hub</a>
+            <a href="index.html" class="back-link">← Back to Toolkit Hub</a>
             <div class="logo-text">Discover Your Success</div>
             <div class="logo-subtitle">with Alayna Marie</div>
             <h1>📣 Student Acquisition Strategy</h1>
+            <p>Get a customized marketing plan based on exactly how many students you need—from free word-of-mouth to paid advertising.</p>
         </div>
 
-        <div class="why-matters">
-            <h2>🎯 Why This Matters</h2>
-            <p>Most music teachers approach student acquisition backwards. They blast marketing everywhere, hoping something sticks. Or worse, they do nothing and wonder why the phone isn't ringing.</p>
-            <p>The reality is this: <strong>your marketing strategy should match your student need.</strong> If you only need 3 more students, posting in Facebook groups and asking current families for referrals is enough. If you need 20 students, you'll need a multi-channel approach with paid advertising.</p>
-            <p><strong>The Problem:</strong> Teachers waste time and money on marketing channels that don't match their goals. They pay for Google Ads when word-of-mouth would suffice. Or they rely solely on referrals when they actually need aggressive outreach to fill their schedule.</p>
-            <p>This tool creates a customized acquisition plan based on how many students you need, factoring in realistic conversion rates and timelines. No more guessing—just a clear roadmap to hit your student target.</p>
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('calculator')">
+                <span class="tab-icon">🧮</span> Planner
+            </button>
+            <button class="tab-btn" onclick="switchTab('results')" id="resultsTabBtn" style="display: none;">
+                <span class="tab-icon">📊</span> Strategy
+            </button>
+            <button class="tab-btn" onclick="switchTab('learn')">
+                <span class="tab-icon">📚</span> Learn
+            </button>
         </div>
 
-        <div class="benefits-banner">
-            <h2>✨ What You'll Get</h2>
-            <div class="benefit-item">
-                <div class="benefit-icon">🎯</div>
-                <div class="benefit-text">
-                    <strong>Custom Marketing Plan</strong>
-                    <p>Tailored strategy based on exactly how many students you need</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">📊</div>
-                <div class="benefit-text">
-                    <strong>Referral Math</strong>
-                    <p>Know how many inquiries and marketing touches you need to generate</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">💰</div>
-                <div class="benefit-text">
-                    <strong>Cost-Effective Channels</strong>
-                    <p>Prioritized list from free word-of-mouth to paid advertising</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon">⏰</div>
-                <div class="benefit-text">
-                    <strong>Realistic Timeline</strong>
-                    <p>Week-by-week action plan to reach your student goal</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-box">
+        <!-- PLANNER TAB -->
+        <div id="calculatorTab" class="tab-content active">
             <div class="section">
                 <h2>📝 Your Student Need</h2>
                 
@@ -276,7 +271,12 @@
 
                 <button class="calculate-btn" onclick="generateStrategy()">Create My Marketing Plan</button>
             </div>
+        </div>
+        <!-- END PLANNER TAB -->
 
+        <!-- STRATEGY TAB -->
+        <div id="resultsTab" class="tab-content">
+            <div class="content-box">
             <div id="results" class="results">
                 <div class="summary-header">
                     <h2>🎯 Your Personalized Marketing Strategy</h2>
@@ -303,7 +303,62 @@
                     <p><strong>Free Channels First:</strong> Exhaust word-of-mouth, community groups, and school partnerships before paying for ads. These build sustainable, long-term student pipelines.</p>
                 </div>
             </div>
+            </div>
         </div>
+        <!-- END STRATEGY TAB -->
+
+        <!-- LEARN TAB -->
+        <div id="learnTab" class="tab-content">
+            <div class="why-matters">
+                <h2>🎯 Why This Matters</h2>
+                <p>Most music teachers approach student acquisition backwards. They blast marketing everywhere, hoping something sticks. Or worse, they do nothing and wonder why the phone isn't ringing.</p>
+                <p>The reality is this: <strong>your marketing strategy should match your student need.</strong> If you only need 3 more students, posting in Facebook groups and asking current families for referrals is enough. If you need 20 students, you'll need a multi-channel approach with paid advertising.</p>
+                <p><strong>The Problem:</strong> Teachers waste time and money on marketing channels that don't match their goals. They pay for Google Ads when word-of-mouth would suffice. Or they rely solely on referrals when they actually need aggressive outreach to fill their schedule.</p>
+                <p>This tool creates a customized acquisition plan based on how many students you need, factoring in realistic conversion rates and timelines. No more guessing—just a clear roadmap to hit your student target.</p>
+            </div>
+
+            <div class="benefits-banner">
+                <h2>✨ What You'll Get</h2>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-text">
+                        <strong>Custom Marketing Plan</strong>
+                        <p>Tailored strategy based on exactly how many students you need</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-text">
+                        <strong>Referral Math</strong>
+                        <p>Know how many inquiries and marketing touches you need to generate</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-text">
+                        <strong>Cost-Effective Channels</strong>
+                        <p>Prioritized list from free word-of-mouth to paid advertising</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⏰</div>
+                    <div class="benefit-text">
+                        <strong>Realistic Timeline</strong>
+                        <p>Week-by-week action plan to reach your student goal</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Marketing Strategy Deep Dive</strong>
+                <p><strong>The Conversion Rate Reality:</strong> Not everyone who contacts you becomes a student. Word-of-mouth referrals convert at 60-80%. Facebook groups 20-40%. Paid ads 10-30%. Plan your outreach accordingly.</p>
+                <p><strong>Start Free, Scale Paid:</strong> Always exhaust free channels (referrals, Facebook groups, school partnerships) before spending on ads. Free channels also build sustainable pipelines that keep generating students.</p>
+                <p><strong>Consistency Over Intensity:</strong> Posting in 1 Facebook group twice weekly for 3 months beats blasting 10 groups once. People need to see you regularly to trust you.</p>
+                <p><strong>Track Your Sources:</strong> Ask EVERY inquiry "How did you hear about me?" Use the Referral Tracker to identify your best channels and focus energy there.</p>
+                <p><strong>Timeline Realism:</strong> Word-of-mouth is slow but sustainable. Facebook groups show results in 2-4 weeks. Paid ads can work immediately but are expensive. Build a mix for steady growth.</p>
+            </div>
+        </div>
+        <!-- END LEARN TAB -->
 
         <div class="footer">
             <p><strong>Connect with Alayna Marie:</strong></p>
@@ -336,6 +391,31 @@
         document.getElementById('passwordInput')?.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') checkPassword();
         });
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            if (tabName === 'calculator') {
+                document.getElementById('calculatorTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            } else if (tabName === 'results') {
+                document.getElementById('resultsTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            } else if (tabName === 'learn') {
+                document.getElementById('learnTab').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(3)').classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         function generateStrategy() {
             const current = parseInt(document.getElementById('currentStudents').value) || 0;
@@ -552,7 +632,10 @@
 
             // Show results
             document.getElementById('results').classList.add('show');
-            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Show and switch to Strategy tab
+            document.getElementById('resultsTabBtn').style.display = 'flex';
+            switchTab('results');
         }
     </script>
 </body>
